@@ -61,7 +61,17 @@ class Rover
     end
   end
 
-
+  def move
+    if direction == "N"
+      @y_position += 1
+    elsif direction == "E"
+      @x_position += 1
+    elsif direction == "S"
+      @y_position -= 1
+    elsif direction == "W"
+      @x_position -= 1
+    end
+  end
 
 end
 
