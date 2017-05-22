@@ -26,16 +26,17 @@
 
 class Rover
 
-  attr_accessor :x_position, :y_position, :direction
+  attr_reader :x_position, :y_position, :direction
+  attr_accessor :read_instruction, :turn_left, :turn_right
 
-  def initialize(x_position, y_position, direction)   #Starts witwh xy positions. Facing W/E/N/S
+  def initialize(x_position, y_position, direction)   #Starts witwh xy positions. Facing N/W/E/S
     @x_position = x_position
     @y_position = y_position
     @direction = direction
   end
 
-  def read_instruction #should accept an instruction and decide whether to tell the rover to move or turn.
-    @input = @input.split(//)
+  def read_instruction(inputs) #should accept an instruction and decide whether to tell the rover to move or turn.
+    @input = inputs.split(//)
 
     @input.each do |intruction|  #iterate through every instruction (letter) in the input
       if @input == "M"
@@ -95,9 +96,8 @@ class Rover
 end
 
 rover1 = Rover.new(1, 1, "N")
-rover1.move
-rover1.move
 
+rover1.read_instruction("MMLRRLMRLM")
 rover1.report
 
 
