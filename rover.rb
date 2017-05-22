@@ -35,16 +35,17 @@ class Rover
   end
 
   def read_instruction #should accept an instruction and decide whether to tell the rover to move or turn.
-    if @input = "M"
+    if @input == "M"
       move  #run move method
-    elsif @input = "L"
+    elsif @input == "L"
       turn_left  #run turn_left method
-    elsif @input = "R"
+    elsif @input == "R"
       turn_right  #run turn_right method
     end
   end
 
   def turn_left
+    puts "Turning left"
     if @direction == "N"
       @direction = "W"
     elsif @direction == "W"
@@ -57,6 +58,7 @@ class Rover
   end
 
   def turn_right
+    puts "Turning right"
     if @direction == "N"
       @direction = "E"
     elsif @direction == "E"
@@ -69,6 +71,7 @@ class Rover
   end
 
   def move
+    puts "Moving forward one space"
     if direction == "N"
       @y_position += 1
     elsif direction == "E"
@@ -80,9 +83,17 @@ class Rover
     end
   end
 
+  def report
+    puts "Your rover is at coordinates (#{@x_position}, #{@y_position}) and is facing #{@direction}"
+  end
+
 end
 
-rover1 = Rover.new
+rover1 = Rover.new(1, 1, "N")
+rover1.move
+rover1.move
+
+rover1.report
 
 
 # ###################################
