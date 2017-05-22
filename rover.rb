@@ -1,20 +1,26 @@
-# In order to control a rover, NASA sends a string of letters. The possible letters are 'L', 'R' and 'M'.
-#
-# 'L' and 'R' makes the rover spin 90 degrees left or right respectively, without moving from its current spot.
-# 'M' means move forward one grid point, and maintain the same heading.
-
 class Rover
 
   attr_reader :x_position, :y_position, :direction
-  attr_accessor :start, :read_instruction, :turn_left, :turn_right
+  attr_accessor :start, :get_instruction, :read_instruction, :turn_left, :turn_right
 
-  def initialize(x_position, y_position, direction)   #Starts with xy positions. Facing N/W/E/S
-    @x_position = x_position
-    @y_position = y_position
-    @direction = direction
+  def initialize   #(x_position, y_position, direction)   #Starts with xy positions. Facing N/W/E/S
+    @x_position = 0
+    @y_position = 0
+    # @direction = direction
   end
 
-  def start   #Takes in commands from user in terminal
+  def start  #Takes in starting position and facing direction
+    puts "\nEnter the rover's starting x-position\n"
+    @x_position = gets.chomp.to_i
+    puts "\nEnter the rover's starting y-position\n"
+    @y_position = gets.chomp.to_i
+    puts "\nWhich way is the rover initially facing? 'N', 'S', 'W', or 'S'\n"
+    @direction = gets.chomp
+
+    get_instruction
+  end
+
+  def get_instruction   #Takes in commands from user in terminal
     puts "\nEnter a string of commands.\n'L' and 'R' make the rover spin 90 degrees left or right, respectively, without moving from its current spot.\n
     'M' moves the rover forward one grid point while maintaining the same heading.\n
     'B' moves the rover backward one grid point while maintaining the same heading.\n
@@ -102,10 +108,5 @@ class Rover
 end
 
 
-rover1 = Rover.new(1, 2, "N")
+rover1 = Rover.new    #(1, 2, "N")   #Begin at (1,2), facing N
 rover1.start
-# rover1.read_instruction("LMLMLMLMM")  #Output is as expected
-
-
-rover2 = Rover.new(3, 3, "E")
-# rover2.read_instruction("MMRMMRMRRM")  #Output is as expected
