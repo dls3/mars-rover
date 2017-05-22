@@ -6,7 +6,6 @@ class Rover
   def initialize   #(x_position, y_position, direction)   #Starts with xy positions. Facing N/W/E/S
     @x_position = 0
     @y_position = 0
-    # @direction = direction
   end
 
   def start  #Takes in starting position and facing direction
@@ -14,7 +13,7 @@ class Rover
     @x_position = gets.chomp.to_i
     puts "\nEnter the rover's starting y-position\n"
     @y_position = gets.chomp.to_i
-    puts "\nWhich way is the rover initially facing? 'N', 'S', 'W', or 'S'\n"
+    puts "\nWhich way is the rover initially facing? 'N', 'S', 'W', or 'E'\n"
     @direction = gets.chomp
 
     get_instruction
@@ -24,7 +23,7 @@ class Rover
     puts "\nEnter a string of commands.\n'L' and 'R' make the rover spin 90 degrees left or right, respectively, without moving from its current spot.\n
     'M' moves the rover forward one grid point while maintaining the same heading.\n
     'B' moves the rover backward one grid point while maintaining the same heading.\n
-    Example: 'BMLRRLMML'\n\n"
+    Example: BMLRRLMML\n\n"
 
     read_instruction (gets.chomp)
   end
@@ -108,5 +107,5 @@ class Rover
 end
 
 
-rover1 = Rover.new    #(1, 2, "N")   #Begin at (1,2), facing N
+rover1 = Rover.new
 rover1.start
