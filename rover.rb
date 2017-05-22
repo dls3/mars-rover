@@ -38,12 +38,12 @@ class Rover
   def read_instruction(inputs) #should accept an instruction and decide whether to tell the rover to move or turn.
     @input = inputs.split(//)
 
-    @input.each do |intruction|  #iterate through every instruction (letter) in the input
-      if @input == "M"
+    @input.each do |instruction|  #iterate through every instruction (letter) in the input
+      if instruction == "M"
         move  #run move method
-      elsif @input == "L"
+      elsif instruction == "L"
         turn_left  #run turn_left method
-      elsif @input == "R"
+      elsif instruction == "R"
         turn_right  #run turn_right method
       end
     end
