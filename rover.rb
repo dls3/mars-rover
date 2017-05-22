@@ -6,7 +6,7 @@
 class Rover
 
   attr_reader :x_position, :y_position, :direction
-  attr_accessor :read_instruction, :turn_left, :turn_right
+  attr_accessor :start, :read_instruction, :turn_left, :turn_right
 
   def initialize(x_position, y_position, direction)   #Starts with xy positions. Facing N/W/E/S
     @x_position = x_position
@@ -14,8 +14,17 @@ class Rover
     @direction = direction
   end
 
-  def read_instruction(inputs) #should accept an instruction and decide whether to tell the rover to move or turn
-    puts "Reading instructions..."
+  def start   #Takes in commands from user in terminal
+    puts "\nEnter a string of commands.\n'L' and 'R' make the rover spin 90 degrees left or right, respectively, without moving from its current spot.\n
+    'M' moves the rover forward one grid point while maintaining the same heading.\n
+    'B' moves the rover backward one grid point while maintaining the same heading.\n
+    Example: 'BMLRRLMML'\n\n"
+
+    read_instruction (gets.chomp)
+  end
+
+
+  def read_instruction(inputs) #Reads and executes the commands, one by one
     @input = inputs.upcase.split(//)
 
     @input.each do |instruction|  #iterate through every instruction (letter) in the input
@@ -94,8 +103,9 @@ end
 
 
 rover1 = Rover.new(1, 2, "N")
-rover1.read_instruction("LMLMLMLMM")  #Output is as expected
+rover1.start
+# rover1.read_instruction("LMLMLMLMM")  #Output is as expected
 
 
 rover2 = Rover.new(3, 3, "E")
-rover2.read_instruction("MMRMMRMRRM")  #Output is as expected
+# rover2.read_instruction("MMRMMRMRRM")  #Output is as expected
