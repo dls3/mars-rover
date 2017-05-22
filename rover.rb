@@ -28,13 +28,20 @@ class Rover
 
   attr_accessor :x_position, :y_position, :direction
 
-  def initialize(x_position, y_position, direction)
+  def initialize(x_position, y_position, direction)   #Starts witwh xy positions. Facing W/E/N/S
     @x_position = x_position
     @y_position = y_position
     @direction = direction
   end
 
   def read_instruction #should accept an instruction and decide whether to tell the rover to move or turn.
+    if @input = "M"
+      move  #run move method
+    elsif @input = "L"
+      turn_left  #run turn_left method
+    elsif @input = "R"
+      turn_right  #run turn_right method
+    end
   end
 
   def turn_left
