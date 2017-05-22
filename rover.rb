@@ -42,7 +42,7 @@ class Rover
       elsif instruction == "R"
         turn_right  #run turn_right method
       else
-        puts "Not a valid command. Please enter 'M', 'L', or 'R'"
+        puts "Not a valid command. Please enter 'M', 'L', 'R', 'B'"
       end
     end
     report
@@ -105,7 +105,6 @@ class Rover
   end
 
 end
-
 
 rover1 = Rover.new
 rover1.start
