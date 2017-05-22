@@ -15,7 +15,8 @@ class Rover
   end
 
   def read_instruction(inputs) #should accept an instruction and decide whether to tell the rover to move or turn
-    @input = inputs.downcase.split(//)
+    puts "Reading instructions..."
+    @input = inputs.upcase.split(//)
 
     @input.each do |instruction|  #iterate through every instruction (letter) in the input
       if instruction == "M"
@@ -30,7 +31,7 @@ class Rover
         puts "Not a valid command. Please enter 'M', 'L', or 'R'"
       end
     end
-
+    report
   end
 
   def turn_left
@@ -72,7 +73,6 @@ class Rover
     end
   end
 
-
   def move_back
     puts "Moving backward one space"
     if direction == "N"
@@ -87,29 +87,15 @@ class Rover
   end
 
   def report
-    puts "Your rover is at coordinates (#{@x_position}, #{@y_position}) and is facing #{@direction}"
+    puts "Your rover is at coordinates (#{@x_position}, #{@y_position}) and is facing #{@direction} \n\n"
   end
 
 end
 
-rover1 = Rover.new(1, 1, "N")
 
-rover1.read_instruction("MMLRRLMRLM")
-rover1.report
+rover1 = Rover.new(1, 2, "N")
+rover1.read_instruction("LMLMLMLMM")  #Output is as expected
 
 
-# ###################################
-# Test Input 1:
-# 1 2 N                > our start position and direction
-# LMLMLMLMM            > a series of move and turn instructions.
-#
-# Expected Output:
-# 1 3 N                > rover's new position
-#
-#
-# Test Input 2:
-# 3 3 E
-# MMRMMRMRRM
-#
-# Expected Output:
-# 5 1 E
+rover2 = Rover.new(3, 3, "E")
+rover2.read_instruction("MMRMMRMRRM")  #Output is as expected
