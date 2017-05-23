@@ -1,7 +1,6 @@
 class Rover
 
-  attr_reader :x_position, :y_position, :direction
-  attr_accessor :start, :get_instruction, :read_instruction, :turn_left, :turn_right
+  attr_accessor :x_position, :y_position, :direction
 
   def initialize   #(x_position, y_position, direction)   #Starts with xy positions. Facing N/W/E/S
     @x_position = 0
